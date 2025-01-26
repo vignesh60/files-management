@@ -1,5 +1,5 @@
-// src/components/FileUpload.js
 import { useState } from "react";
+import upload from "../components/assets/upload.png";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
@@ -28,12 +28,26 @@ function FileUpload() {
   };
 
   return (
-    <div>
-      <h1>Upload File</h1>
-      <form onSubmit={uploadFile}>
-        <input type="file" onChange={handleFileChange} required />
-        <button type="submit">Upload</button>
-      </form>
+    <div className="upload-container">
+      <div className="upload-box">
+       <img src={upload} alt="upload" />
+        <form onSubmit={uploadFile}>
+          <div className="file-input-wrapper">
+            <input
+              type="file"
+              onChange={handleFileChange}
+              className="file-input"
+              required
+            />
+            <label htmlFor="file" className="file-label">
+              Choose a file
+            </label>
+          </div>
+          <button type="submit" className="upload-btn">
+            Upload
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

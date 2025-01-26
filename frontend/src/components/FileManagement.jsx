@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import image_img from "../components/assets/image-img.png";
 import pdf_img from "../components/assets/pdf-img.png";
-import text_img from "../components/assets/word-img.png";
+import text_img from "../components/assets/text-img.png";
+import docx_img from "../components/assets/docx-img.png";  
+import json_img from "../components/assets/json-img.png";  
+import other_img from "../components/assets/other-img.png";  
 import { FaRegImage } from "react-icons/fa6";
 import { FaFilePdf } from "react-icons/fa6";
 import { IoDocumentText } from "react-icons/io5";
 import { FaRegFile } from "react-icons/fa6";
+import { FaFileWord } from "react-icons/fa"; // Add Word Icon
+import { FaFileCode } from "react-icons/fa"; 
 
 function FileManagement() {
   const [files, setFiles] = useState([]);
@@ -13,9 +18,11 @@ function FileManagement() {
     images: 0,
     pdfs: 0,
     texts: 0,
+    docx: 0,
+    json: 0,
     others: 0,
   });
-  const [selectedFileId, setSelectedFileId] = useState(null); // Track selected file id
+  const [selectedFileId, setSelectedFileId] = useState(null);
 
   const fetchFiles = async () => {
     try {
@@ -32,6 +39,8 @@ function FileManagement() {
     let imageCount = 0;
     let pdfCount = 0;
     let textCount = 0;
+    let docxCount = 0;
+    let jsonCount = 0;
     let otherCount = 0;
 
     files.forEach((file) => {
@@ -42,6 +51,10 @@ function FileManagement() {
         pdfCount++;
       } else if (fileExtension === "txt") {
         textCount++;
+      } else if (fileExtension === "docx") {
+        docxCount++;
+      } else if (fileExtension === "json") {
+        jsonCount++;
       } else {
         otherCount++;
       }
@@ -51,6 +64,8 @@ function FileManagement() {
       images: imageCount,
       pdfs: pdfCount,
       texts: textCount,
+      docx: docxCount,
+      json: jsonCount,
       others: otherCount,
     });
   };
@@ -85,7 +100,7 @@ function FileManagement() {
   };
 
   const toggleOptions = (fileId) => {
-    setSelectedFileId((prevFileId) => (prevFileId === fileId ? null : fileId)); // Toggle the selected file ID
+    setSelectedFileId((prevFileId) => (prevFileId === fileId ? null : fileId)); 
   };
 
   useEffect(() => {
@@ -94,8 +109,6 @@ function FileManagement() {
 
   return (
     <div className="files-management-container">
-      <h1>Google Drive File Management</h1>
-
       <div className="file-counts-container">
         <span className="file-count-card">
           <FaRegImage className="icon image" />
@@ -113,6 +126,18 @@ function FileManagement() {
           <IoDocumentText className="icon text" />
           <p>
             Text <h2>{fileCount.texts}</h2>
+          </p>
+        </span>
+        <span className="file-count-card">
+          <FaFileWord className="icon docx" />
+          <p>
+            DOCX <h2>{fileCount.docx}</h2>
+          </p>
+        </span>
+        <span className="file-count-card">
+          <FaFileCode className="icon json" />
+          <p>
+            JSON <h2>{fileCount.json}</h2>
           </p>
         </span>
         <span className="file-count-card">
@@ -139,8 +164,12 @@ function FileManagement() {
             fileIcon = pdf_img;
           } else if (fileExtension === "txt") {
             fileIcon = text_img;
+          } else if (fileExtension === "docx") {
+            fileIcon = docx_img;
+          } else if (fileExtension === "json") {
+            fileIcon = json_img; 
           } else {
-            fileIcon = null; // Or set a default icon for unknown file types
+            fileIcon = other_img;
           }
 
           return (
@@ -154,16 +183,14 @@ function FileManagement() {
                 <span className="file-name">{file.name}</span>
               </div>
 
-              {/* Three dots icon to toggle options */}
               <div className="options">
                 <button
                   className="dots-btn"
                   onClick={() => toggleOptions(file.id)}
                 >
-                  &#x22EE; {/* Ellipsis icon */}
+                  &#x22EE;
                 </button>
 
-                {/* Conditionally render Rename and Delete buttons for the selected file */}
                 {selectedFileId === file.id && (
                   <div className="options-menu">
                     <button
