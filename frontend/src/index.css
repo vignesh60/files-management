@@ -1,0 +1,121 @@
+
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Main container */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Heading styles */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Upload form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 2px dashed #007BFF;
+  border-radius: 10px;
+  background: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  outline: none;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* File list styling */
+.file-list {
+  margin-top: 20px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.file-item span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.file-item button {
+  margin-left: 10px;
+  background-color: #28a745;
+}
+
+.file-item button.delete {
+  background-color: #dc3545;
+}
+
+.file-item button.rename {
+  background-color: #ffc107;
+  color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+      width: 90%;
+      padding: 15px;
+  }
+  
+  input[type="file"] {
+      width: 100%;
+  }
+
+  button {
+      width: 100%;
+      margin-top: 10px;
+  }
+}

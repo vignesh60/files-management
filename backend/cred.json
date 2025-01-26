@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cryptic-gate-448104-q2",
+  "private_key_id": "a483fdb7efab8cd8ec7c4fcc6884cdc965e6644d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCXI6D4XuLl/qzx\nomtw8Ij5b2ZRfSGwsGeqUvlTWpjSATyi7Q9Rla/QrtAh1OYeLLnXvuG2yi3fWhvS\nFaGF888/zIao7u942+R3XuRM7rtrb3F83mPTQI72PGaNRbojOycP8760WFnRWdvH\nHBBS5t0Ry/1xQQrh7FJRfc13O5c1EDu8mItz4TtPl1xYmUxf8WD286TtUz3+Wb4N\n3lj32FbHYk6Srd3hNqdYmO5VurcfjR97RaXARYND6yS47tG3VZNcFMFYobhlU9EN\n2AcqRJtXoQsjTcwqDSIzQr5137NqIUjb2hQt+3KB4TxpedOtapmokYIfQDuoxQdd\nwxVxegVjAgMBAAECggEAEEipbjki7y7KSVp7gvaXe3ByMLNvrs7CzIoWDNIFBxNV\nCiTKcrrS74P2Lr72cCfXehQ502zjFl5qAu+LsJf9K12I4KilqnrembHinRtXnBKs\nwoxfawJYpNULI4twq50S71gOovWl77VjxYcThysShHla/BnK516D2/3W5lLITtIf\ngiw2AvkGCnLryI2GdD6RAzIMyEdRm/JxNx2YM8worLqXfQaeTxtVPaUtF1OfjIja\nxSsz66WBNuOG01KzpdT6gkWlDKt81UI+U94d3tgH1jJH0sTcexHazxGGzb0KLUMX\nyU0QSpBJ9JyCmb0wWrQAZOXNXX4PGybaVBFVM62LsQKBgQDMo1f9ZhnhHLXDyhw+\nOSK5lUdkFx0uujeEBJErDUp5bzUQJRw7xPfVFqm+eaLfbKoaCYotPkJ2YmrQGAud\nLe7Cp1vRuMjZXpvqQwcU9JCucB4eihkGjGwzfmFZzLDFPTPjjCt05yMEh44H3/u5\nM09UccaKhsN7s7xturUgBrAEWQKBgQC9Es8Ri7qgTLuXfO39qegF+xFMUV4NspDo\nqKa4CRF0dh02B9UFIlAjiwvpLffn733I7tnZfysnZ9ZWxeKgThCfpKfZGSy/h4gF\n5Tr3d99oRgZ1WjSeLBm9eXIOpzswE7hQ4phEbxqvkU/vPmpErqoBM9AR1X1qv8aZ\nBgIOnUQQGwKBgFNVMT+/lEpXpq1UYKv2GG36nFfmEbw1mOXp9jPR9cH9x14LvrOY\nQlREJluqrOjPF3YC7IIAGJCdA2I6aIBZdCFQhdOhrCjYniWHphqifUiL37gQBKDm\nDinqDTrEYDfx9G91ZTz14wy1JuGOFLQWcPeyXWeL+Y8mYlVM8vVXw9YBAoGBALmY\nG/DCMyilCcNzG35TaPFt+RXsDSHu9XWcD0M5i4vBYX0nBQBsJTQuijuTJvThzpwN\ncYSg4vBkai51QrdOydybWTOvFZDQbkIzOMWwQnltu2s4Z8wXyBCIhOBDYcMYqGWl\neAg883oBbvCOWOwgc7qIbKcE5H6Dz2NoVV6ZGzWfAoGBALPhLYOn1jtbDGkiwurB\njX/pajsM6X+HjvT6ufYGFa9uQ0Yb9BGqUeliW3+jo9TOawBu3PI/UFRfN/j52/Hj\nJsArzAgkV1hVKrxaUeaNlmc41VSQBkGfnZulPtPc+ZXsSZWY+YNI5HjeJeg0e8mh\ntifzH0Y6jp2tTUzL4T/itl4q\n-----END PRIVATE KEY-----\n",
+  "client_email": "uploadfiles@cryptic-gate-448104-q2.iam.gserviceaccount.com",
+  "client_id": "112723761449404280674",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/uploadfiles%40cryptic-gate-448104-q2.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
