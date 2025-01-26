@@ -129,6 +129,15 @@ const SideBar = () => {
                   </Link>
                 </>
               )}
+              {/* Add the new link to the File Upload page */}
+              <Link
+                to="/upload"
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <li>
+                  <BsSlack className="icons" /> File Upload
+                </li>
+              </Link>
             </ul>
           </div>
         </div>

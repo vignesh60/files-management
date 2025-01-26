@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-primary: #6f6af8;
-  --color-white: #fff;
   --color-red: rgb(255, 63, 63);
   --color-gray-100: hsl(220, 20%, 10%, 5%);
   --color-gray-200: hsl(220, 20%, 10%, 10%);
@@ -23,6 +21,30 @@
   --radius-2: 0.6rem;
   --radius-3: 1rem;
   --radius-4: 2rem;
+
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-bg: #F4F7FC;
+  --color-blue-primary: #0080FF;
+  --color-blue-secondary: #D5EAFF;
+  --color-yellow-primary: #EDAC1A;
+  --color-yellow-secondary: #FFF6D3;
+  --color-violet-primary: #665CFE;
+  --color-violet-secondary: #E4E5FF;
+  --color-red-primary: #FB503B;
+  --color-red-secondary: #FFEFED;
+  --color-green-primary: #00BA87;
+  --color-green-secondary: #DAF7F0;
+  --color-font-primary: #242F57;
+  --color-font-secondary: #71799a;
+  --color-orange: #ff6400;
+  --color-orange-secondary: #ffeadc;
+  --maximum-width: 700px;
+  --maximum-width-900: 900px;
+  --maximum-width-1000: 1000px;
+  --font-size-1: 1rem;
+  --font-size-small: 0.8rem;
 
 }
 
@@ -545,4 +567,185 @@ img {
   .search_container {
     width: 100%;
   }
+}
+
+
+
+
+
+
+
+
+
+
+/* -----------------file-display------------------ */
+
+.files-management-container {
+  padding: 0 1rem;
+}
+
+.file-counts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.file-count-card {
+  background: var(--color-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 22px -8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-count-card .icon {
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.file-count-card p {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.icon.image {
+  background: var(--color-green-secondary);
+  color: var(--color-green-primary);
+}
+
+.icon.pdf {
+  background: var(--color-red-secondary);
+  color: var(--color-red-primary);
+}
+
+.icon.text {
+  background: var(--color-blue-secondary);
+  color: var(--color-blue-primary);
+}
+
+.icon.other {
+  background: var(--color-yellow-secondary);
+  color: var(--color-yellow-primary);
+}
+
+.all-files-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.file-item {
+  background: var(--color-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 22px -8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.file-item .options {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.file-item .options .dots-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: var(--color-gray-200);
+  transition: 0.3s ease;
+}
+
+.dots-btn:hover {
+  background: var(--color-gray-900) !important;
+  color: var(--color-white);
+}
+
+.options-menu {
+  border: 3px solid var(--color-black);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.options-menu button {
+  width: 100% !important;
+  border-radius: 0 !important;
+  transition: 0.3s ease;
+}
+
+.file-details {
+  width: 100%;
+}
+
+.file-image {
+  background: #eee;
+  border-radius: 0.5rem;
+  padding: 2rem 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-image img {
+  width: 10rem;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+.footer {
+  background-color: var(--color-gray-900);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
