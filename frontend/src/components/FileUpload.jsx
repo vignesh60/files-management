@@ -8,7 +8,7 @@ function FileUpload() {
     setFile(e.target.files[0]);
   };
 
-  const uploadFile = async (e) => {
+  /* const uploadFile = async (e) => {
     e.preventDefault();
     if (!file) return alert("Please select a file.");
 
@@ -25,8 +25,36 @@ function FileUpload() {
     } catch (error) {
       console.error("Error uploading file:", error);
     }
+  }; */
+
+
+  const uploadFile = async (e) => {
+    e.preventDefault();
+    if (!file) return alert("Please select a file.");
+  
+    const token = localStorage.getItem("token"); // Get JWT token
+    if (!token) return alert("Please login first.");
+  
+    const formData = new FormData();
+    formData.append("file", file);
+  
+    try {
+      const response = await fetch("http://localhost:5050/upload", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, // Send token in headers
+        },
+        body: formData,
+      });
+  
+      const result = await response.json();
+      alert(result.message);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
 
+  
   return (
     <div className="upload-container">
       <div className="upload-box">

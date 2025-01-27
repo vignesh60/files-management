@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../components/assets/logo.png";
 import Profile from "../components/assets/profile.png";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
+import { jwtDecode } from "jwt-decode";
 import $ from "jquery";
 
 const Header = () => {
@@ -15,12 +16,36 @@ const Header = () => {
     profilePicture: null,
   });
 
+  useEffect(() => {
+    // Check for the token in localStorage
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      try {
+        // Decode the token and set the user data
+        const decodedToken = jwtDecode(token);
+        setUser({
+          name: decodedToken.name,
+          profilePicture: decodedToken.profilePicture,
+        });
+        setAccount(true); // Token exists, user is logged in
+      } catch (error) {
+        console.error("Invalid token", error);
+        setAccount(false); // Invalid token, user is not logged in
+      }
+    } else {
+      setAccount(false); // No token, user is not logged in
+    }
+  }, []);
+
   const handleLogout = () => {
     const confirmLogout = window.confirm(
       "Are you sure you want to logout now?"
     );
     if (confirmLogout) {
-      setAccount(false);
+      localStorage.removeItem("token"); // Remove the token from localStorage
+      setAccount(false); // Set account state to false
+      window.location.href = "/sigin"; // Redirect to the home
     }
   };
 
@@ -47,7 +72,7 @@ const Header = () => {
         </Link>
       </div>
 
-      {!account ? (
+      {account ? (
         <div className="notification_plus_login">
           <Link to="notification">
             <div className="notification">
@@ -59,11 +84,11 @@ const Header = () => {
               <img src={Profile} alt="Default Profile" />
             </div>
             <p>
-              vicky <IoIosArrowDown />
+              {user.name} <IoIosArrowDown />
             </p>
 
-            {showProfileMenu && (
-              <div className="logout-container">
+            {account && (
+              <div>
                 <Link to="/profile">
                   <button>Profile</button>
                 </Link>
@@ -75,10 +100,14 @@ const Header = () => {
       ) : (
         <div className="signin-signup">
           <Link to="signin">
-            <button className="btn log primary">Sign In</button>
+            <button className="btn log primary" style={{ background: "#000" }}>
+              Sign In
+            </button>
           </Link>
           <Link to="signup">
-            <button className="btn log primary">Sign Up</button>
+            <button className="btn log primary" style={{ background: "#000" }}>
+              Sign Up
+            </button>
           </Link>
         </div>
       )}
