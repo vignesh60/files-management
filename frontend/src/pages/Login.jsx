@@ -8,6 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false); // Loader state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,6 +16,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
     try {
       const response = await axios.post("http://localhost:5050/api/auth/login", formData);
       localStorage.setItem("token", response.data.token);
@@ -23,36 +25,44 @@ const Login = () => {
       window.location.reload();
     } catch (error) {
       toast.error(error.response?.data?.error || "Something went wrong");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
-      <div className="auth-container">
-        <div className="auth-left">
-        </div>
-        <div className="auth-right">
-          <h2>Login</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit">Login</button>
-          </form>
-        </div>
+    <div className="auth-container">
+      <div className="auth-left">
       </div>
+      <div className="auth-right">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" disabled={loading} className="login-button">
+            {loading ? (
+              <div className="spinner"></div>
+            ) : (
+              "Login"
+            )}
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

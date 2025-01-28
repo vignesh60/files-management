@@ -109,27 +109,6 @@ const SideBar = () => {
                   </li>
                 </>
               )}
-              {!account && (
-                <>
-                  <Link
-                    to="signin"
-                    style={{ textDecoration: "none", color: "#fff" }}
-                  >
-                    <li>
-                      <TbLogin className="icons" /> Sign In
-                    </li>
-                  </Link>
-                  <Link
-                    to="signup"
-                    style={{ textDecoration: "none", color: "#fff" }}
-                  >
-                    <li>
-                      <TbLogin className="icons" /> Sign Up
-                    </li>
-                  </Link>
-                </>
-              )}
-              {/* Add the new link to the File Upload page */}
               <Link
                 to="/upload"
                 style={{ textDecoration: "none", color: "#fff" }}

@@ -88,7 +88,7 @@ const Header = () => {
             </p>
 
             {account && (
-              <div>
+              <div className="logout-container">
                 <Link to="/profile">
                   <button>Profile</button>
                 </Link>
