@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LoginImage from "../components/assets/login-image.jpg"; // Example image
+import { LuRefreshCcw } from "react-icons/lu";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,10 @@ const Login = () => {
     e.preventDefault();
     setLoading(true); // Start loading
     try {
-      const response = await axios.post("http://localhost:5050/api/auth/login", formData);
+      const response = await axios.post(
+        "http://localhost:5050/api/auth/login",
+        formData
+      );
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       toast.success("Login successful");
@@ -32,8 +35,7 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-left">
-      </div>
+      <div className="auth-left"></div>
       <div className="auth-right">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -54,11 +56,7 @@ const Login = () => {
             required
           />
           <button type="submit" disabled={loading} className="login-button">
-            {loading ? (
-              <div className="spinner"></div>
-            ) : (
-              "Login"
-            )}
+            {loading ? <LuRefreshCcw className="loader" /> : "Login"}
           </button>
         </form>
       </div>
