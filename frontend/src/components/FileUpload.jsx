@@ -1,6 +1,7 @@
 import { useState } from "react";
 import upload from "../components/assets/upload.png";
 import { toast } from "react-toastify";
+import { LuRefreshCcw } from "react-icons/lu";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
@@ -68,7 +69,7 @@ function FileUpload() {
           </div>
           <button type="submit" className="upload-btn" disabled={isUploading}>
             {isUploading ? (
-              <span className="spinner"></span> 
+              <LuRefreshCcw className="loader" />
             ) : (
               "Upload"
             )}

@@ -13,9 +13,10 @@ import {
   FaFileWord,
   FaFileCode,
 } from "react-icons/fa6";
-import { IoDocumentText } from "react-icons/io5";
+import { IoClose, IoDocumentText } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { IoMdRefresh } from "react-icons/io";
+import { LuSave } from "react-icons/lu";
 
 function UserFileManagement() {
   const [files, setFiles] = useState([]);
@@ -27,6 +28,9 @@ function UserFileManagement() {
     json: 0,
     others: 0,
   });
+  const [renameOverlay, setRenameOverlay] = useState(false);
+  const [newName, setNewName] = useState("");
+
   const [selectedFileId, setSelectedFileId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterType, setFilterType] = useState("all");
@@ -114,7 +118,7 @@ function UserFileManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fileId, newName }),
       });
-      alert(await response.text());
+      toast.success(await response.text());
       fetchFiles();
     } catch (error) {
       console.error("Error renaming file:", error);
@@ -211,7 +215,7 @@ function UserFileManagement() {
           <option value="json">JSON</option>
         </select>
         <button className="refresh-btn" onClick={fetchFiles}>
-        <IoMdRefresh className="icon" />
+          <IoMdRefresh className="icon" />
         </button>
       </div>
 
@@ -261,12 +265,10 @@ function UserFileManagement() {
                   <div className="options-menu">
                     <button
                       className="btn rename-btn"
-                      onClick={() =>
-                        renameFile(
-                          file.driveFileId,
-                          prompt("Enter new name:", file.fileName)
-                        )
-                      }
+                      onClick={() => {
+                        setRenameOverlay(true);
+                        setNewName(file.fileName);
+                      }}
                     >
                       Rename
                     </button>
@@ -279,6 +281,40 @@ function UserFileManagement() {
                   </div>
                 )}
               </div>
+              {selectedFileId === file.driveFileId && renameOverlay && (
+                <div className="overlay">
+                  <div className="overlay-content">
+                    <h2>Rename File</h2>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        renameFile(file.driveFileId, newName);
+                        setRenameOverlay(false);
+                      }}
+                    >
+                      <input
+                        type="text"
+                        placeholder="Enter new file name"
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                        required
+                      />
+                      <div className="overlay-actions">
+                        <button type="submit" className="btn save-btn">
+                        <LuSave className="icon" /> Save
+                        </button>
+                        <button
+                          type="button"
+                          className="btn cancel-btn"
+                          onClick={() => setRenameOverlay(false)}
+                        >
+                          <IoClose className="icon" />
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}

@@ -121,7 +121,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 }); */
 
-
 app.get("/files", async (req, res) => {
   try {
     // Retrieve the token from the request header (assumes 'Authorization' header is being sent)
@@ -148,8 +147,6 @@ app.get("/files", async (req, res) => {
   }
 });
 
-
-// Update file name in Google Drive
 app.post("/update", async (req, res) => {
   const { fileId, newName } = req.body;
 
@@ -158,7 +155,14 @@ app.post("/update", async (req, res) => {
       fileId,
       resource: { name: newName },
     });
-
+    const updatedFile = await UserFile.findOneAndUpdate(
+      { driveFileId: fileId },
+      { fileName: newName },
+      { new: true }
+    );
+    if (!updatedFile) {
+      return res.status(404).send("File not found in database");
+    }
     res.status(200).send(`File renamed to ${newName}`);
   } catch (error) {
     res.status(500).send("Error updating file: " + error.message);
@@ -177,21 +181,14 @@ app.post("/update", async (req, res) => {
   }
 }); */
 
-
 app.delete("/delete", async (req, res) => {
-  const { fileId } = req.body; // The 'fileId' should be the Google Drive file ID
-
+  const { fileId } = req.body;
   try {
-    // Step 1: Delete the file from Google Drive
     await drive.files.delete({ fileId });
-
-    // Step 2: Delete the file record from MongoDB
     const fileRecord = await UserFile.findOneAndDelete({ driveFileId: fileId });
-
     if (!fileRecord) {
       return res.status(404).send("File not found in the database.");
     }
-
     res
       .status(200)
       .send("File deleted successfully from Google Drive and database.");
@@ -202,7 +199,6 @@ app.delete("/delete", async (req, res) => {
 
 app.use("/api/auth", authRoutes);
 
-// Start server
 app.listen(5050, () => {
   console.log("Server running on port 5050");
 });

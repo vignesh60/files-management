@@ -74,11 +74,6 @@ const Header = () => {
 
       {account ? (
         <div className="notification_plus_login">
-          <Link to="notification">
-            <div className="notification">
-              <IoNotificationsOutline className="icon" />
-            </div>
-          </Link>
           <span className="profile-field" onClick={handleProfile}>
             <div className="profile-image">
               <img src={Profile} alt="Default Profile" />

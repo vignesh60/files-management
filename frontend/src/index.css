@@ -90,7 +90,7 @@ body {
 
 .loader {
   font-size: 1.7rem;
-  animation: spin 0.8s linear infinite reverse;
+  animation: spin 0.9s linear infinite reverse;
 }
 
 /* Disable button style for loading */
@@ -962,6 +962,92 @@ img {
 .upload-btn:hover {
   background-color: var(--color-black);
 }
+
+
+
+
+
+
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+.overlay-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.overlay-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.overlay-content input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.overlay-content input:focus {
+  box-shadow: 0 0 0 5px var(--color-blue-secondary);
+  border-color: var(--color-blue-primary);
+}
+
+.overlay-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.overlay-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.overlay-actions .save-btn {
+  background: var(--color-blue-primary);
+  color:var(--color-white);
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  margin-inline: auto;
+}
+
+.overlay-actions .cancel-btn {
+  background: var(--color-red-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  padding: 0.5rem;
+  border: 2px solid var(--color-white);
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+}
+
 
 
 
